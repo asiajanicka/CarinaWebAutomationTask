@@ -21,7 +21,22 @@
         <assertj-core.version>3.24.2</assertj-core.version>
         <jackson-datatype.version>2.9.7</jackson-datatype.version>
         <lombok.version>1.18.24</lombok.version>
+        <suite>helloWorld</suite>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>zebrunner_snapshots</id>
+            <name>zebrunner Snapshots</name>
+            <url>https://nexus.zebrunner.dev/repository/ce-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -62,5 +77,55 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>3.10.1</version>-->
+<!--                <configuration>-->
+<!--                    <release>${java.version}</release>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-dependency-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>copy</id>-->
+<!--                        <phase>initialize</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>copy</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <artifactItems>-->
+<!--                        <artifactItem>-->
+<!--                            <groupId>com.zebrunner</groupId>-->
+<!--                            <artifactId>agent-core</artifactId>-->
+<!--                            <version>${zebrunner-agent.version}</version>-->
+<!--                            <outputDirectory>${project.build.directory}/agent</outputDirectory>-->
+<!--                            <destFileName>zebrunner-agent.jar</destFileName>-->
+<!--                        </artifactItem>-->
+<!--                    </artifactItems>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>3.0.0-M6</version>-->
+<!--                <configuration>-->
+<!--                    <argLine>-javaagent:${project.build.directory}/agent/zebrunner-agent.jar</argLine>-->
+<!--                    <useSystemClassLoader>false</useSystemClassLoader>-->
+<!--                    <suiteXmlFiles>-->
+<!--                        <suiteXmlFile>${project.build.directory}/test-classes/testng_suites/${suite}.xml</suiteXmlFile>-->
+<!--                    </suiteXmlFiles>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 </project>
